@@ -1,9 +1,13 @@
 .App {
   text-align: center;
+  background-color: #0f212f;
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
 }
 
 .App-logo {
-  height: 40vmin;
+  size: 3rem;
   pointer-events: none;
 }
 
@@ -14,7 +18,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #0f212f;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,5 +38,665 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.navbar {
+  background-color: #111521;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 35px;
+  width: auto;
+}
+
+.search-container {
+  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 32px;
+}
+
+.search-wrapper {
+  position: relative;
+  height: 36px;
+}
+
+.search-bar {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 0 40px 0 16px;
+  font-size: 14px;
+}
+
+.search-button {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #00c2ff;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.search-button i {
+  color: #111521;
+  font-size: 11px;
+}
+
+.search-button:hover {
+  background-color: #4fa8c7;
+}
+
+/* Update menu button styles */
+.menu-section {
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.menu-button:hover {
+  color: #61dafb;
+  background-color: #1a1f2e;
+}
+
+/* Sidebar styles */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100vh;
+  background-color: #111521;
+  z-index: 1000;
+  transition: width 0.3s ease-in-out;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  width: 280px;
+}
+
+.sidebar-header {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.close-button:hover {
+  color: #61dafb;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar-menu li {
+  padding: 15px 20px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.sidebar-menu li:hover {
+  background-color: #1a1f2e;
+}
+
+.sidebar-menu i {
+  width: 20px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.menu-text {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.sidebar.open .menu-text {
+  opacity: 1;
+}
+
+/* Main content wrapper */
+.main-content {
+  flex: 1;
+  margin-left: 60px;
+  transition: margin-left 0.3s ease-in-out;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.sidebar-expanded .main-content {
+  margin-left: 280px;
+}
+
+/* Remove the navbar::after since we don't need it anymore */
+.navbar::after {
+  display: none;
+}
+
+/* Add these new styles for game cards */
+.game-cards-container {
+  padding: 24px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.game-card {
+  background: linear-gradient(135deg, #1a4a6e 0%, #163d5c 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+}
+
+.game-card-content {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  min-height: 200px;
+  position: relative;
+}
+
+.game-info {
+  flex: 1;
+  text-align: left;
+  color: white;
+  max-width: 60%;
+}
+
+.game-info h2 {
+  font-size: 24px;
+  margin: 0 0 12px 0;
+  color: white;
+}
+
+.game-info p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
+  opacity: 0.9;
+}
+
+.play-button {
+  background-color: #00c2ff;
+  color: #111521;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.play-button:hover {
+  background-color: #4fa8c7;
+}
+
+.spin-info {
+  margin-top: 12px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.spin-info span {
+  color: #00c2ff;
+  font-weight: bold;
+}
+
+.game-image {
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  width: 40%;
+  height: 120%;
+}
+
+/* Add media query for responsive design */
+@media (max-width: 768px) {
+  .game-card-content {
+    flex-direction: column;
+  }
+  
+  .game-info {
+    max-width: 100%;
+  }
+  
+  .game-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    right: 0;
+    bottom: 0;
+    margin-top: 20px;
+  }
+}
+
+/* Add these new styles for daily quests */
+.daily-quests-container {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.quest-card {
+  background-color: #111521;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s ease;
+}
+
+.quest-card:hover {
+  transform: translateY(-2px);
+}
+
+.quest-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.quest-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.quest-info {
+  flex-grow: 1;
+}
+
+.quest-info h3 {
+  color: white;
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  font-weight: 600;
+}
+
+.quest-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  margin: 0 0 8px 0;
+}
+
+.progress-bar {
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: #00c2ff;
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Media query for better mobile responsiveness */
+@media (max-width: 768px) {
+  .daily-quests-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Add these new styles for sorting options */
+.sorting-options {
+  display: inline-flex;
+  gap: 8px;
+  padding: 8px;
+  background-color: rgba(4,8,12,255);
+  border-radius: 40px;
+  margin: 16px 0;
+}
+
+.sort-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: transparent;
+  border: none;
+  color: #6B7280;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.sort-button:hover {
+  background-color: rgba(16,21,32,255);
+  color: #fff;
+}
+
+.sort-button.active {
+  background-color: rgba(16,21,32,255);
+  color: #fff;
+}
+
+.sort-button i {
+  font-size: 16px;
+}
+
+.sort-button span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Add media query for better mobile responsiveness */
+@media (max-width: 768px) {
+  .sorting-options {
+    padding: 12px;
+    margin: 16px;
+  }
+
+  .sort-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Add custom scrollbar styling */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Add these new styles for game grid */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 24px;
+}
+
+.game-grid-card {
+  aspect-ratio: 3/4;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.game-grid-card:hover {
+  transform: translateY(-4px);
+}
+
+.game-grid-content {
+  padding: 16px;
+  color: white;
+  text-align: left;
+}
+
+.game-grid-content h3 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.game-type {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.multiplier-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+  .game-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .game-grid-content h3 {
+    font-size: 20px;
+  }
+}
+
+/* Add these new styles for mini games */
+.mini-games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  padding: 24px;
+}
+
+.mini-game-card {
+  aspect-ratio: 2/3;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add gradient overlay */
+.mini-game-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%;  /* Adjust this value to control how high the fade goes */
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  pointer-events: none;  /* Makes sure the overlay doesn't interfere with clicks */
+}
+
+.mini-game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mini-game-multiplier {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.mini-game-content {
+  color: white;
+  text-align: left;
+  position: relative;  /* This ensures the text stays on top of the gradient */
+  z-index: 1;  /* This ensures the text stays on top of the gradient */
+}
+
+.mini-game-content h3 {
+  font-size: 20px;
+  margin: 0 0 4px 0;
+  font-weight: bold;
+}
+
+.mini-game-type {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Add media query for better mobile responsiveness */
+@media (max-width: 768px) {
+  .mini-games-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .mini-game-content h3 {
+    font-size: 18px;
+  }
+}
+
+/* Add this new style for the dice game card */
+.game-grid-card:first-child {
+  background-color: #4CD790;
+}
+
+.dice-game {
+  background-color: #0f212f;
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-button:hover {
+  color: #00c2ff;
+}
+
+/* Update the dice game container styles */
+.dice-game-container {
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  height: calc(100vh - 100px);
+}
+
+/* Add styles for the new left sidebar */
+.dice-game-left-sidebar {
+  width: 300px;
+  background-color: #1a2c3d;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+/* Keep existing styles for main area and right sidebar */
+.dice-game-main {
+  flex: 1;
+  background-color: #1a2c3d;
+  border-radius: 16px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.dice-game-sidebar {
+  width: 300px;
+  background-color: #1a2c3d;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+/* Update responsive layout */
+@media (max-width: 1200px) {
+  .dice-game-container {
+    flex-direction: column;
+  }
+
+  .dice-game-left-sidebar,
+  .dice-game-sidebar {
+    width: 100%;
   }
 }
