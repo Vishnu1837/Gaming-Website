@@ -4,6 +4,9 @@
   min-height: 100vh;
   display: flex;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .App-logo {
@@ -43,14 +46,18 @@
 
 .navbar {
   background-color: #111521;
-  padding: 8px 24px;
+  padding: 4px 16px;
   display: flex;
   align-items: center;
-  height: 64px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  position: sticky;
+  height: 50px;
+  border-bottom: none;
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  margin: 0;
 }
 
 .navbar-logo {
@@ -113,7 +120,7 @@
 .menu-section {
   display: flex;
   align-items: center;
-  padding-left: 24px;
+  padding-left: 0;
 }
 
 .menu-button {
@@ -138,9 +145,9 @@
 .sidebar {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 50px;
   width: 60px;
-  height: 100vh;
+  height: calc(100vh - 50px);
   background-color: #111521;
   z-index: 1000;
   transition: width 0.3s ease-in-out;
@@ -210,7 +217,10 @@
 /* Main content wrapper */
 .main-content {
   flex: 1;
+  padding: 0;
+  width: 100%;
   margin-left: 60px;
+  overflow-x: hidden;
   transition: margin-left 0.3s ease-in-out;
   height: 100vh;
   overflow-y: auto;
@@ -637,8 +647,24 @@
 .dice-game {
   background-color: #0f212f;
   min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.dice-game-header {
   padding: 20px;
-  color: white;
+  padding-top: 50px;
+}
+
+.dice-game-content {
+  padding-top: 20px;
 }
 
 .back-button {
@@ -667,7 +693,7 @@
 
 /* Add styles for the new left sidebar */
 .dice-game-left-sidebar {
-  width: 300px;
+  width: 100px;
   background-color: #1a2c3d;
   border-radius: 16px;
   padding: 24px;
@@ -683,7 +709,7 @@
 }
 
 .dice-game-sidebar {
-  width: 300px;
+  width: 100px;
   background-color: #1a2c3d;
   border-radius: 16px;
   padding: 24px;
@@ -699,4 +725,530 @@
   .dice-game-sidebar {
     width: 100%;
   }
+}
+
+/* Add these new styles for the dice game */
+.betting-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bet-section {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.bet-section label {
+  display: block;
+  color: #6B7280;
+  margin-bottom: 10px;
+}
+
+.bet-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reset-button {
+  background-color: #2D3748;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.increase-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.increase-group input {
+  background-color: #2D3748;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  width: 80px;
+}
+
+.stop-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.stop-input {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.stop-input label {
+  display: block;
+  color: #6B7280;
+  margin-bottom: 10px;
+}
+
+.stop-input input {
+  background-color: #2D3748;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.start-autobet {
+  background-color: #00FF00;
+  color: black;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Dice slider styles */
+.dice-slider {
+  margin: 20px 0;
+}
+
+.slider-numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #6B7280;
+}
+
+.slider-track {
+  height: 8px;
+  background-color: #2D3748;
+  border-radius: 4px;
+  position: relative;
+}
+
+.slider-fill {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background-color: #FF0000;
+  border-radius: 4px;
+  width: 96%;
+}
+
+.slider-handle {
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translate(50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Game stats styles */
+.game-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item label {
+  display: block;
+  color: #6B7280;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+}
+
+.stat-value button {
+  background: none;
+  border: none;
+  color: #6B7280;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.layout-content {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  position: relative;
+}
+
+/* Add this new style for when sidebar is hidden */
+.layout-content:not(:has(.sidebar)) .main-content {
+  padding-left: 0;  /* Remove left padding when sidebar is hidden */
+}
+
+/* If the above doesn't work in all browsers, you can alternatively add a class */
+.no-sidebar .main-content {
+  padding-left: 0;
+}
+
+/* Update the layout styles */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Update main-content styles */
+.main-content {
+  flex: 1;
+  padding: 0; /* Remove default padding */
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Update dice game styles */
+.dice-game {
+  background-color: #0f212f;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.dice-game-header {
+  padding: 20px;
+  padding-top: 10px;
+}
+
+.dice-game-content {
+  padding-top: 20px;
+}
+
+/* Remove any margin from the body and html */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Add these new styles for the dice game boxes */
+.dice-game-boxes {
+  display: flex;
+  gap: 24px;
+  padding: 0 24px;
+  margin-top: 20px;
+}
+
+.dice-box {
+  background-color: #1a2c3d;
+  border-radius: 16px;
+  height: 400px; /* Adjust height as needed */
+}
+
+.dice-box.left {
+  flex: 1;
+}
+
+.dice-box.right {
+  flex: 2;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .dice-game-boxes {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+  
+  .dice-box {
+    width: 100%;
+  }
+}
+
+/* Update dice game content styles */
+.dice-game-content {
+  padding: 0 24px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 30px;
+  width: calc(100% - 48px); /* Added to ensure proper width calculation */
+}
+
+.dice-box-center {
+  background-color: #1a2c3d;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px; /* Reduced from 1100px */
+  height: 350px; /* Reduced from 450px */
+  margin: 0;
+  margin-left: 20px;
+  margin-right: 40px;
+  padding: 20px;
+  position: relative;
+}
+
+/* Keep responsive styles */
+@media (max-width: 768px) {
+  .dice-game-content {
+    padding: 0 16px;
+  }
+}
+
+/* Add these new styles for the dice game layout */
+.dice-game-layout {
+  display: flex;
+  padding-top: 0; /* Remove this padding */
+  height: calc(100vh - 50px); /* Subtract navbar height */
+  margin-top: 50px; /* Add margin to account for fixed navbar */
+}
+
+.dice-game-sidebar {
+  width: 140px; /* Reduced from 160px */
+  background-color: #111521;
+  border-right: none;
+  padding-top: 0;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  height: calc(100vh - 50px);
+  transition: width 0.3s ease;
+  border-radius: 0;
+}
+
+.dice-game-sidebar.collapsed {
+  width: 24px; /* Reduced from 32px */
+}
+
+.dice-game-sidebar.collapsed .dice-nav-item span {
+  display: none;
+}
+
+.hamburger-toggle {
+  cursor: pointer;
+  color: #6B7280;
+  font-size: 20px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 100%;
+}
+
+.hamburger-toggle:hover {
+  color: white;
+}
+
+/* Update menu section styles */
+.menu-section {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
+/* Update navbar styles to properly align items */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Remove the old hamburger styles from sidebar */
+.dice-game-sidebar {
+  padding-top: 0;
+}
+
+.dice-nav-menu {
+  margin-top: 0;
+  border-top: none;
+}
+
+/* Update dice nav menu styles */
+.dice-nav-menu {
+  margin: 20px 0 0 0; /* Add top margin */
+  padding: 0;
+  list-style: none;
+}
+
+.dice-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Reduced from 14px */
+  padding: 20px 16px; /* Reduced horizontal padding from 24px */
+  color: #6B7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dice-nav-item i {
+  font-size: 18px; /* Increased icon size */
+  width: 24px; /* Increased width for icons */
+  text-align: center;
+}
+
+.dice-nav-item span {
+  font-size: 16px; /* Increased font size */
+  font-weight: 500;
+}
+
+/* Update content margin to match new sidebar width */
+.dice-game-content {
+  flex: 1;
+  margin-left: 140px; /* Match new sidebar width */
+  transition: margin-left 0.3s ease;
+}
+
+/* Keep the collapsed state styles */
+.dice-game-sidebar.collapsed {
+  width: 24px; /* Reduced from 32px */
+}
+
+.collapsed .dice-nav-item {
+  padding: 20px 4px; /* Reduced horizontal padding from 6px to 4px */
+  justify-content: flex-start;
+}
+
+.collapsed .dice-nav-item i {
+  font-size: 14px; /* Reduced from 16px */
+  width: auto;
+  margin: 0;
+}
+
+/* Update content margin for collapsed state */
+.dice-game-content.expanded .dice-box-center {
+  margin-left: 10px; /* Reduced from 20px */
+  margin-right: 20px; /* Added right margin for collapsed state */
+}
+
+/* Update dice nav item styles for bigger icons */
+.dice-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  color: #6B7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.dice-nav-item i {
+  font-size: 22px; /* Increased from 18px */
+  width: 24px;
+  text-align: center;
+}
+
+/* Update collapsed state icon styles */
+.collapsed .dice-nav-item {
+  padding: 20px 4px;
+  justify-content: flex-start;
+}
+
+.collapsed .dice-nav-item i {
+  font-size: 18px; /* Increased from 14px */
+  width: auto;
+  margin: 0;
+}
+
+/* Keep the sidebar widths the same */
+.dice-game-sidebar {
+  width: 140px;
+}
+
+.dice-game-sidebar.collapsed {
+  width: 24px;
+}
+
+/* Add styles for the left box */
+.dice-box-left {
+  background-color: #162532;
+  border-radius: 12px;
+  width: 220px; /* Reduced from 280px */
+  height: 310px; /* Reduced from 410px */
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+/* Update dice game content styles to accommodate both boxes */
+.dice-game-content {
+  padding: 0 12px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 80px; /* Increased to move boxes down */
+  width: calc(100% - 24px);
+}
+
+/* Update margin for collapsed state */
+.dice-game-content.expanded .dice-box-left {
+  margin-left: 10px;
+}
+
+/* Keep the center box styles */
+.dice-box-center {
+  background-color: #1a2c3d;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px; /* Reduced from 1100px */
+  height: 350px; /* Reduced from 450px */
+  margin: 0;
+  margin-left: 20px;
+  margin-right: 40px;
+  padding: 20px;
+  position: relative;
+}
+
+/* Update dice box styles */
+.dice-box-center {
+  background-color: #1a2c3d;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px; /* Reduced from 1100px */
+  height: 350px; /* Reduced from 450px */
+  margin: 0;
+  margin-left: 20px;
+  margin-right: 40px;
+  padding: 20px;
+  position: relative;
+}
+
+.dice-box-left {
+  background-color: #162532;
+  border-radius: 12px;
+  width: 220px; /* Reduced from 280px */
+  height: 310px; /* Reduced from 410px */
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+/* Update content margin for collapsed state */
+.dice-game-content.expanded .dice-box-center {
+  margin-left: 10px;
+  margin-right: 20px;
 }

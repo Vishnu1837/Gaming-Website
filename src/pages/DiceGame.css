@@ -1,0 +1,20 @@
+.dice-game {
+  padding: 20px;
+  color: white;
+}
+
+.dice-game-header {
+  margin-bottom: 20px;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.back-button:hover {
+  color: #00c2ff;
+}

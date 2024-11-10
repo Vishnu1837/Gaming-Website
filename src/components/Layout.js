@@ -1,15 +1,16 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
-function Layout({ isSidebarOpen, toggleSidebar }) {
+function Layout({ children }) {
   return (
-    <div className={`App ${isSidebarOpen ? 'sidebar-expanded' : ''}`}>
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
-      <div className="main-content">
-        <Navbar />
-        <Outlet />
+    <div className="layout">
+      <Navbar />
+      <div className="layout-content">
+        <Sidebar />
+        <main className="main-content">
+          {children}
+        </main>
       </div>
     </div>
   );
